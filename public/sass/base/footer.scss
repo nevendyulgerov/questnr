@@ -1,0 +1,65 @@
+// -----------------------------------------------------------------------------
+// This file contains styles for the footer.
+// -----------------------------------------------------------------------------
+
+footer.footer {
+  position: relative;
+  padding: 20px 0px 30px 0px;
+  background-color: $dark-metallic;
+  color: $white;
+  @extend .z-depth-1;
+
+  @include respond-to('mobile-md') {
+    padding-bottom: 0px;
+  }
+
+  a {
+    color: $white;
+    padding: 0px 5px;
+
+    @include respond-to('mobile-md') {
+      display: block;
+      width: 200px;
+      padding: 10px 0px 10px 0px;
+      margin: 0 auto;
+
+      &:first-child {
+        padding-top: 0px;
+      }
+
+      &:last-child {
+        padding-bottom: 0px;
+      }
+    }
+
+    &:hover {
+      color: $light-green;
+    }
+  }
+
+  .separator {
+    @include respond-to('mobile-md') {
+      display: none;
+    }
+  }
+
+  .footer-box {
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  .copyright {
+    text-align: center;
+    font-size: 12px;
+    opacity: 0.5;
+    color: $light-green;
+
+    p {
+      margin: 0px;
+    }
+
+    @include respond-to('mobile-md') {
+      padding: 20px 0px 40px 0px;
+    }
+  }
+}

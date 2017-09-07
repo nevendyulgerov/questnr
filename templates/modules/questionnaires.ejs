@@ -1,0 +1,387 @@
+<%
+/**
+ * Module Template: Questionnaires
+ * @param object module
+ */
+%>
+
+<%
+var date = req.query.date ? req.query.date : '';
+var limit  = req.query.limit ? parseInt(req.query.limit, 10) : 10;
+var skip = req.query.skip ? parseInt(req.query.skip, 10) : 0;
+var filter = req.query.filter ? req.query.filter : '';
+var search = req.query.search ? req.query.search : '';
+%>
+
+<div class="module" data-module="questionnaires" data-user="<%= isSuper ? 'admin' : 'normal' %>">
+    <div class="module-box">
+        <% if ( module.title || module.subtitle ) { %>
+        <header class="module-header">
+            <% if ( module.title ) { %>
+            <h2 class="title"><%= module.title; %></h2>
+            <% } %>
+            <% if ( module.subtitle ) { %>
+            <p class="subtitle"><%= module.subtitle; %></p>
+            <% } %>
+        </header>
+        <% } %>
+
+        <div class="module-body">
+
+            <% if ( isSuper ) { %>
+                <div class="widget" data-widget="createQuestionnaire">
+                    <div class="widget-header">
+                        <h4 class="title">Create new questionnaires</h4>
+                    </div>
+                    <a href="#" class="trigger create-questionnaire">Create</a>
+                </div>
+
+                <div class="all-questionnaires">
+                    <div class="all-questionnaires-header">
+                        <div class="box">
+                            <h4 class="title">Questionnaires</h4>
+                        </div>
+
+                        <% if ( module.all.length === 0 ) { %>
+                            <div class="warning-note">
+                                <span>No existing questionnaires.</span>
+                            </div>
+                        <% } else { %>
+                            <div class="widget-group">
+                                <div class="first-group">
+                                    <div class="widget" data-widget="bulkActions">
+                                        <form action="" method="GET">
+                                            <div class="bulk-actions">
+                                                <select name="bulk-action">
+                                                    <option value="" selected disabled>Actions</option>
+                                                    <option value="delete">Delete</option>
+                                                    <option value="export">Export</option>
+                                                </select>
+                                                <a href="#" class="trigger trigger-bulk-action">Apply</a>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+
+                                <div class="second-group">
+                                    <div class="widget" data-widget="search">
+                                        <form action="" method="GET">
+                                            <div class="form-field">
+                                                <input type="search" name="search" placeholder="Search by email..." value="<%= search %>">
+                                            </div>
+                                            <a href="#" class="trigger search"><span class="icon fa fa-search"></span></a>
+
+                                            <div class="form-field">
+                                                <input type="hidden" name="filter" value="all">
+                                            </div>
+
+                                            <div class="form-field">
+                                                <input type="hidden" name="limit" value="<%= limit %>">
+                                            </div>
+                                        </form>
+                                    </div>
+
+                                    <div class="widget" data-widget="itemsPerPage">
+                                        <form action="" method="GET">
+                                            <div class="form-field">
+                                                <select name="limit" title="Select the number of results per page">
+                                                    <option value="" selected disabled>Results</option>
+                                                    <option value="1" <% if ( limit === 1 ) {%> selected <% } %> <% if ( limit === null) {%>selected<%} %>>1</option>
+                                                    <option value="2" <% if ( limit === 2 ) {%> selected <% } %>>2</option>
+                                                    <option value="5" <% if ( limit === 5 ) {%> selected <% } %>>5</option>
+                                                    <option value="10" <% if ( limit === 10 ) {%> selected <% } %>>10</option>
+                                                    <option value="25" <% if ( limit === 25 ) {%> selected <% } %>>25</option>
+                                                    <option value="50" <% if ( limit === 50 ) {%> selected <% } %>>50</option>
+                                                    <option value="100" <% if ( limit === 100 ) {%> selected <% } %>>100</option>
+                                                    <option value="0" <% if ( limit === 0 ) {%> selected <% } %>>All</option>
+                                                </select>
+                                            </div>
+
+                                            <div class="form-field">
+                                                <input type="hidden" name="filter" value="<%= filter %>">
+                                            </div>
+
+                                            <div class="form-field">
+                                                <input type="hidden" name="search" value="<%= search %>">
+                                            </div>
+                                        </form>
+                                    </div>
+
+                                    <div class="widget" data-widget="filterByStatus">
+                                        <form action="" method="GET">
+                                            <div class="form-field">
+                                                <select name="filter" title="Filter results by status">
+                                                    <option value="" selected disabled>Status</option>
+                                                    <option value="assigned" <% if ( filter === 'assigned' ) {%> selected <% } %>>Assigned</option>
+                                                    <option value="completed" <% if ( filter === 'completed' ) {%> selected <% } %>>Completed</option>
+                                                    <option value="all" <% if ( filter === 'all' ) {%> selected <% } %>>All</option>
+                                                </select>
+                                            </div>
+
+                                            <div class="form-field">
+                                                <input type="hidden" name="limit" value="0">
+                                            </div>
+
+                                            <div class="form-field">
+                                                <input type="hidden" name="search" value="">
+                                            </div>
+                                        </form>
+                                    </div>
+
+                                    <div class="widget" data-widget="clearResults">
+                                        <form action="" method="GET">
+                                            <a href="#" class="trigger clear-results" title="Clear results"><span class="icon fa fa-refresh"></span></a>
+
+                                            <div class="form-field">
+                                                <input type="hidden" name="limit" value="10">
+                                            </div>
+
+                                            <div class="form-field">
+                                                <input type="hidden" name="search" value="">
+                                            </div>
+
+                                            <div class="form-field">
+                                                <input type="hidden" name="filter" value="">
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        <% } %>
+                    </div>
+
+                    <% if ( module.all.length > 0 ) { %>
+                        <div class="questionnaires-table-header">
+                            <div class="questionnaire-selector">
+                                <input type="checkbox" name="all">
+                            </div>
+                            <div data-sort="title" data-sort-type="a">
+                                <span class="col-title">Title</span>
+                                <div class="sorting">
+                                    <a href="#" class="trigger sort-asc" title="Sort alphabetically in ascending order"><span class="icon fa fa-chevron-up"></span></a>
+                                    <a href="#" class="trigger sort-desc" title="Sort alphabetically in descending order"><span class="icon fa fa-chevron-down"></span></a>
+                                </div>
+                            </div>
+                            <div data-sort="assignee-email" data-sort-type="a">
+                                <span class="col-title">Assignee Email</span>
+                                <div class="sorting">
+                                    <a href="#" class="trigger sort-asc" title="Sort alphabetically in ascending order"><span class="icon fa fa-chevron-up"></span></a>
+                                    <a href="#" class="trigger sort-desc" title="Sort alphabetically in descending order"><span class="icon fa fa-chevron-down"></span></a>
+                                </div>
+                            </div>
+                            <div data-sort="questions-count" data-sort-type="n">
+                                <span class="col-title">Questions Count</span>
+                                <div class="sorting">
+                                    <a href="#" class="trigger sort-asc" title="Sort numerically in ascending order"><span class="icon fa fa-chevron-up"></span></a>
+                                    <a href="#" class="trigger sort-desc" title="Sort numerically in descending order"><span class="icon fa fa-chevron-down"></span></a>
+                                </div>
+                            </div>
+                            <div data-sort="date" data-sort-type="d">
+                                <span class="col-title">Date</span>
+                                <div class="sorting">
+                                    <a href="#" class="trigger sort-asc" title="Sort date in ascending order"><span class="icon fa fa-chevron-up"></span></a>
+                                    <a href="#" class="trigger sort-desc" title="Sort date in descending order"><span class="icon fa fa-chevron-down"></span></a>
+                                </div>
+                            </div>
+                            <div data-sort="status" data-sort-type="a">
+                                <span class="col-title">Status</span>
+                                <div class="sorting">
+                                    <a href="#" class="trigger sort-asc" title="Sort alphabetically in ascending order"><span class="icon fa fa-chevron-up"></span></a>
+                                    <a href="#" class="trigger sort-desc" title="Sort alphabetically in descending order"><span class="icon fa fa-chevron-down"></span></a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="questionnaires-table">
+                            <% module.all.forEach((a) => { %>
+                            <div class="questionnaire" data-id="<%= a._id %>" data-assignee-id="<%= a.assigneeID %>">
+                                <div class="questionnaire-selector">
+                                    <input type="checkbox" name="<%= a._id %>">
+                                </div>
+                                <div class="title">
+                                    <a href="#" class="trigger view-questionnaire" title="View questionnaire">
+                                        <h5 class="value"><%= a.title %></h5>
+                                    </a>
+                                </div>
+                                <div class="assignee-email">
+                                    <a href="mailto:<%= a.assigneeEmail %>" class="value"><%= a.assigneeEmail %></a>
+                                </div>
+                                <div class="questions-count">
+                                    <span class="value"><%= a.questions.length %></span>
+                                </div>
+                                <div class="date">
+                                    <span class="value"><%= a.lastModified ? formatDate(a.lastModified) : formatDate(a.created) %></span>
+                                </div>
+                                <div class="status" data-status="<%= a.status %>">
+                                    <span class="value"><%= capitalize(a.status) %></span>
+                                </div>
+                            </div>
+                            <% }) %>
+                        </div>
+                    <% } %>
+
+                    <% if ( typeof pagination !== 'undefined' ) { %>
+                        <div class="actions">
+                            <div class="widget" data-widget="pagination">
+
+                                <% if ( pagination.hasPrev ) { %>
+                                    <a href="/questionnaires?search=<%= search %>&limit=<%= limit %>&skip=<%= skip - limit %>" class="trigger prev-page" title="Go to previous page"><span class="fa fa-chevron-left"></span></a>
+                                <% } %>
+
+                                <% if ( pagination.index ) { %>
+                                    <div class="page-number">
+                                        <span><%= pagination.index %></span>
+                                    </div>
+                                <% } %>
+
+                                <% if ( pagination.hasNext ) { %>
+                                    <a href="/questionnaires?search=<%= search %>&limit=<%= limit %>&skip=<%= skip + limit %>" class="trigger next-page" title="Go to next page"><span class="fa fa-chevron-right"></span></a>
+                                <% } %>
+
+                            </div>
+                        </div>
+                    <% } %>
+                </div>
+            <% } %>
+
+            <% if ( !isSuper && module.assigned ) { %>
+                <div class="questionnaire-list">
+                    <div class="questionnaire-list-header">
+                        <div class="box">
+                            <h4 class="title">Assigned Questionnaires</h4>
+                        </div>
+                        <% if ( module.assigned.length === 0 ) { %>
+                            <div class="warning-note">
+                                <span>No assigned questionnaires.</span>
+                            </div>
+                        <% } %>
+                    </div>
+
+                    <% if ( module.assigned.length > 0 ) { %>
+                        <% module.assigned.forEach((a) => { %>
+                            <div class="questionnaire" data-id="<%= a._id %>" data-assignee-id="<%= a.assigneeID %>">
+                                <div class="questionnaire-overlay">
+                                    <span class="icon fa fa-lock"></span>
+                                </div>
+                                <div class="questionnaire-header">
+                                    <% if ( a.title ) { %>
+                                    <h5 class="title"><%= a.title %></h5>
+                                    <% } %>
+                                    <% if ( a.description ) { %>
+                                    <p class="subtitle"><%= a.description %></p>
+                                    <% } %>
+                                    <a href="#" class="trigger toggle-questionnaire"><span class="icon fa fa-chevron-down"></span></a>
+                                </div>
+
+                                <div class="questionnaire-body">
+                                    <% if ( a.questions ) { %>
+                                    <div class="questions">
+
+                                        <% a.questions.forEach((q, i) => { %>
+                                        <div class="question" data-type="<%= q.type %>" data-index="<%= i + 1 %>">
+
+                                            <div class="text" <% if (q.type.indexOf('range') > - 1) { %>title="Drag the range bar left or right"<% } %>>
+                                                <span class="question-index"><%= i + 1 %>.</span> <%= q.text %>
+                                            </div>
+
+                                            <% if ( q.type === "text" ) { %>
+                                            <input type="text" placeholder="Insert answer...">
+                                            <% } %>
+                                            <% if ( q.type === "textarea" ) { %>
+                                            <textarea placeholder="Insert answer..."></textarea>
+                                            <% } %>
+                                            <% if ( q.type === "range" ) { %>
+                                            <div class="range-counter" title="Selected value">5</div>
+                                            <input type="range" step="1" min="1" max="10" value="5" placeholder="Select from range">
+                                            <% } %>
+                                            <% if ( q.type === "text-range" ) { %>
+                                            <div class="range-counter" title="Selected value">5</div>
+                                            <input type="text" placeholder="Insert answer...">
+                                            <input type="range" step="1" min="1" max="10" value="5" placeholder="Select from range">
+                                            <% } %>
+
+                                        </div>
+                                        <% }) %>
+
+                                    </div>
+                                    <% } %>
+
+                                    <div class="questionnaire-action">
+                                        <a href="#" class="trigger submit-questionnaire">Submit</a>
+                                    </div>
+                                </div>
+                            </div>
+                        <% }) %>
+                    <% } %>
+                </div>
+
+            <div class="completed-questionnaires">
+                <div class="completed-questionnaires-header">
+                    <div class="box">
+                        <h4 class="title">Completed Questionnaires</h4>
+                    </div>
+
+                    <% if ( module.completed.length === 0 ) { %>
+                        <div class="warning-note">
+                            <span>No completed questionnaires.</span>
+                        </div>
+                    <% } %>
+
+                    <% if ( module.completed.length > 0 ) { %>
+                        <% module.completed.forEach((a) => { %>
+                            <div class="questionnaire" data-id="<%= a._id %>">
+                                <div class="questionnaire-header">
+                                    <% if ( a.title ) { %>
+                                    <h5 class="title"><%= a.title %></h5>
+                                    <% } %>
+                                    <% if ( a.description ) { %>
+                                    <p class="subtitle"><%= a.description %></p>
+                                    <% } %>
+                                    <a href="#" class="trigger toggle-questionnaire"><span class="icon fa fa-chevron-down"></span></a>
+                                </div>
+
+                                <div class="questionnaire-body">
+                                    <% if ( a.questions ) { %>
+                                        <div class="answers">
+
+                                            <% a.answers.forEach((answer, i) => { %>
+                                            <div class="answer" data-type="<%= answer.type %>" data-index="<%= i + 1 %>">
+
+                                                <div class="text">
+                                                    <span class="question-index"><%= i + 1 %>.</span> <%= a.questions[i].text %>
+                                                </div>
+
+                                                <% if ( answer.type === "text" ) { %>
+                                                <input type="text" placeholder="Insert answer..." readonly value="<%= answer.text %>">
+                                                <% } %>
+                                                <% if ( answer.type === "textarea" ) { %>
+                                                <textarea placeholder="Insert answer..." readonly><%= answer.text %></textarea>
+                                                <% } %>
+                                                <% if ( answer.type === "range" ) { %>
+                                                <div class="range-counter" title="Selected value"><%= answer.range %></div>
+                                                <% } %>
+                                                <% if ( answer.type === "text-range" ) { %>
+                                                <div class="range-counter" title="Selected value"><%= answer.range %></div>
+                                                <input type="text" placeholder="Insert answer..." readonly value="<%= answer.text %>">
+                                                <% } %>
+
+                                            </div>
+                                            <% }) %>
+
+                                        </div>
+                                    <% } %>
+                                </div>
+                            </div>
+                        <% }) %>
+                    <% } %>
+                </div>
+            </div>
+            <% } %>
+
+            <div class="form-field hidden">
+                <input type="hidden" name="token" value="<%= token %>">
+            </div>
+
+        </div>
+    </div>
+</div>

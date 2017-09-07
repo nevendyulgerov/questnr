@@ -1,0 +1,47 @@
+
+/**
+ * Styles for module 'richText'
+ */
+
+[data-module="richText"] {
+  margin: 0px auto;
+  padding: 20px 15px 80px 15px;
+  max-width: 100%;
+  font-size: 16px;
+
+  .module-box {
+    @extend .wrap-box;
+    @extend .wrap-box-normal;
+  }
+
+  .module-body {
+    @extend .content-box;
+    @extend .content-box-header;
+  }
+
+  .module-content {
+    font-size: 16px;
+    p {
+      &:first-child {
+        margin: 0px;
+        font-size: 20px;
+        padding-bottom: 20px;
+        border-bottom: 1px solid $light-grey;
+      }
+    }
+
+    h2 {
+      font-size: 24px;
+      font-family: $font-muli;
+    }
+  }
+
+  .module-header {
+    @extend .content-box;
+    @extend .content-box-header;
+
+    .subtitle {
+      font-size: 18px;
+    }
+  }
+}

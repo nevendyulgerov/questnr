@@ -1,0 +1,31 @@
+
+/**
+ * Styles for module 'forgotPass'
+ */
+
+[data-module="forgotPass"] {
+  width: 480px;
+  margin: 0px auto;
+  max-width: 100%;
+  @extend .wrap-box;
+  @extend .wrap-box-tiny;
+
+  .module-box {
+    margin: 20px 15px 80px 15px;
+    @extend .content-box;
+  }
+
+  .module-header {
+    @extend .content-box-header;
+  }
+
+  .module-body {
+    form {
+      @extend .form-base;
+    }
+  }
+
+  .trigger {
+    margin-top: -5px;
+  }
+}

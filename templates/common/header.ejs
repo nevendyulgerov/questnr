@@ -1,0 +1,77 @@
+<% include head.ejs %>
+
+<body data-app-name="<%= name.toLowerCase() %>">
+
+    <header class="header">
+        <div class="top-menu">
+            <div class="container">
+
+                <a href="/" class="trigger go-home">
+                    <div class="logo">
+                        <div class="image-box">
+                            <div class="polygon-canvas"></div>
+                            <img src="/images/logo.png">
+                        </div>
+                        <span class="app-name"><%= name %></span>
+                    </div>
+                </a>
+
+                <nav class="navigation">
+                    <div class="nav-box">
+
+                        <ul class="main-navigation" data-state="closed">
+                            <% if ( navigation ) { %>
+                                <% navigation.map((item) => { %>
+                                    <li class="<%= item.slug %><%= item.slug === page ? ' selected' : '' %>">
+                                        <a href="<%= item.link %>" title="<%= item.slug !== 'profile' ? (item.slug === 'logout' ? 'Logout' : 'Go to '+item.text) : 'Logged as '+user.firstName+' '+user.lastName %>"><%= item.slug !== 'profile' ? item.text : user.firstName.charAt(0).toUpperCase()+'.'+user.lastName.charAt(0).toUpperCase()+'.' %></a>
+
+                                        <% if ( Array.isArray(item.submenu) ) { %>
+                                            <ul class="submenu">
+                                                <% item.submenu.map((item) => { %>
+                                                <li class="sub-item">
+                                                    <a href="<%= item.link %>"><%= item.text %></a>
+                                                </li>
+                                                <% }) %>
+                                            </ul>
+                                        <% } %>
+                                    </li>
+                                <% }) %>
+                            <% } %>
+                        </ul>
+
+                        <a href="#" class="trigger toggle-mobile-menu" data-state="closed">
+                            <div class="hamburger">
+                                <span></span>
+                                <span></span>
+                                <span></span>
+                                <span></span>
+                            </div>
+                        </a>
+
+                    </div>
+                </nav>
+            </div>
+        </div>
+
+        <% if ( typeof headerContent !== "undefined" ) { %>
+            <div class="header-content" data-template="<%= headerContent.template %>">
+
+                <div class="polygon-canvas"></div>
+
+                <% if ( headerContent.title ) { %>
+                    <div class="page-title">
+                        <h1><%= headerContent.title %></h1>
+                    </div>
+                <% } %>
+
+                <% if ( headerContent.subtitle ) { %>
+                <div class="page-subtitle">
+                    <p><%= headerContent.subtitle %></p>
+                </div>
+                <% } %>
+
+            </div>
+        <% } %>
+    </header>
+
+    <div class="main-overlay"></div>

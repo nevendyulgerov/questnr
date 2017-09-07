@@ -1,0 +1,308 @@
+
+.slick-modal {
+  height: auto;
+  overflow-y: auto;
+  overflow-x: hidden;
+  opacity: 0;
+  position: fixed;
+  top: 100px;
+  left: 0px;
+  bottom: 30px;
+  right: 0px;
+  margin: 0 auto;
+  z-index: 1000;
+  width: 60%;
+  background-color: $white;
+  color: #444444;
+  box-shadow: 0 8px 17px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
+  pointer-events: none;
+  transition: all 0.3s;
+  border-bottom-left-radius: 4px;
+  border-bottom-right-radius: 4px;
+
+  @include respond-to('mobile-md') {
+    top: 72px;
+  }
+
+  p {
+    margin: 0px;
+    word-break: break-all;
+  }
+
+  .dialog-title {
+    font-size: 20px;
+    font-weight: bold;
+    margin: 0px 0px 5px 0px;
+  }
+
+  .title {
+    position: relative;
+
+    h2 {
+      padding: 0px 55px;
+    }
+
+    @include respond-to('mobile-md') {
+      h2 {
+        font-size: 18px;
+      }
+    }
+  }
+
+  .company-name {
+    margin: 0px;
+  }
+
+  .dialog-header {
+    padding: 0px 0px 20px 0px;
+  }
+
+  .dialog-box {
+    margin: 0px 0px 20px 0px;
+
+    &:last-child {
+      margin: 0px;
+    }
+  }
+
+  .trigger.close {
+    position: absolute;
+    top: -5px;
+    right: 10px;
+
+    .icon {
+      transform: rotate(45deg);
+      font-weight: 900;
+      font-size: 32px;
+      color: $white;
+      transition: all 0.3s;
+    }
+
+    &:hover {
+      .icon {
+        color: $green;
+        transition: all 0.3s;
+      }
+    }
+  }
+}
+
+.slick-modal.active {
+  opacity: 1;
+  pointer-events: all;
+}
+
+.slick-modal-overlay {
+  pointer-events: none;
+  opacity: 0;
+  position: fixed;
+  top: 50px;
+  left: 0px;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0,0,0,0.5);
+  transition: all 0.3s;
+}
+
+.slick-modal-overlay.active {
+  pointer-events: all;
+  opacity: 1;
+  transition: all 0.3s;
+}
+
+.slick-modal.fullscreen {
+  width: 100%;
+  top: 0px;
+  z-index: 100000;
+  bottom: 0px;
+  border-radius: 0px;
+}
+
+.slick-modal {
+  .trigger.fullscreen {
+    border: 2px solid $white;
+    display: inline-block;
+    width: 14px;
+    height: 14px;
+    position: absolute;
+    top: 16px;
+    right: 40px;
+    transition: all 0.3s;
+    border-radius: 4px;
+
+    &:hover {
+      border-color: $green;
+      transition: all 0.3s;
+    }
+  }
+}
+
+@include respond-to('desktop-sm') {
+  .slick-modal {
+    width: 75%;
+  }
+}
+
+@include respond-to('mobile-md') {
+  .slick-modal {
+    width: 100%;
+    bottom: 0px;
+    border-radius: 0px;
+  }
+}
+
+.slick-modal:hover {
+  box-shadow: 0 8px 17px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
+  transition: all 0.3s;
+}
+
+.slick-modal .modal-header {
+  position: relative;
+  margin: 0px;
+  background-color: $dark-metallic;
+}
+
+.slick-modal .modal-header .title {
+  padding: 10px;
+}
+
+.slick-modal .modal-header .title h2 {
+  word-break: break-all;
+  margin: 0px;
+  text-align: center;
+  text-transform: uppercase;
+  font-weight: 100;
+  color: white;
+  font-size: 20px;
+
+  @include respond-to('mobile-md') {
+    text-align: left;
+    padding-left: 5px;
+  }
+}
+
+.slick-modal .modal-body {
+  padding: 20px;
+  min-height: 200px;
+
+  @include respond-to('mobile-md') {
+    padding: 12px;
+  }
+}
+
+.slick-modal .form-field {
+  width: 100%;
+  font-size: 18px;
+  margin: 0px 0px 10px 0px;
+
+  input {
+    margin: 0px !important;
+  }
+}
+
+.slick-modal .form-field:last-child {
+  margin-bottom: 0px;
+}
+
+.slick-modal .form-field label {
+  display: block;
+  font-size: 18px;
+  margin: 0px 0px 5px 0px;
+}
+
+.slick-modal .form-field input:not(.numInput) {
+  width: 100%;
+  padding: 10px 10px;
+  box-shadow: 0 1px 1px 0 rgba(0,0,0,0.16),0 1px 1px 0 rgba(239,239,239,0.12);
+  transition: all 0.3s;
+}
+
+.slick-modal .form-field input:hover {
+  transition: all 0.3s;
+}
+
+.slick-modal .modal-content {
+  position: relative;
+}
+
+.slick-modal .icon {
+  position: absolute;
+  top: 4px;
+  right: 0px;
+  font-size: 20px;
+  color: #444444;
+  transition: all 0.3s;
+
+  @include respond-to('mobile-md') {
+    top: 4px;
+  }
+}
+
+.slick-modal .icon:hover {
+  color: #0077cc;
+  transition: all 0.3s;
+}
+
+.slick-modal .modal-footer {
+  overflow: auto;
+  clear: both;
+  background-color: $white;
+  display: flex;
+  padding: 20px;
+  position: absolute;
+  bottom: 0px;
+  left: 0px;
+  width: calc(100% - 40px);
+}
+
+.slick-modal .modal-footer .trigger.cancel {
+  border: 2px solid $light-red;
+  color: $light-red;
+  transition: all 0.3s;
+  text-decoration: none;
+  padding: 5px 10px;
+  border-radius: 10px;
+  margin-right: 20px;
+}
+
+.slick-modal {
+  .modal-action {
+    position: relative;
+    padding-bottom: 10px;
+    border-bottom: 1px solid $grey;
+  }
+}
+
+.slick-modal .modal-footer .trigger.cancel:hover {
+  background-color: $light-red;
+  color: $white;
+  transition: all 0.3s;
+  @extend .z-depth-1;
+}
+
+.slick-modal .modal-footer .trigger.confirm {
+  border: 2px solid $light-green;
+  color: $green;
+  transition: all 0.3s;
+  text-decoration: none;
+  padding: 5px 10px;
+  border-radius: 10px;
+}
+
+.slick-modal .modal-footer .trigger.confirm:hover {
+  border-color: $green;
+  background-color: $green;
+  color: $white;
+  transition: all 0.3s;
+  @extend .z-depth-1;
+}
+
+.slick-modal .modal-footer .cancel,
+.slick-modal .modal-footer .confirm {
+  width: 50%;
+  float: left;
+  font-size: 18px;
+  text-align: center;
+  text-transform: uppercase;
+  @extend .z-depth-0;
+}

@@ -1,0 +1,57 @@
+<%
+/**
+ * Module Template: Dashboard
+ * @param object module
+ */
+%>
+
+<div class="module" data-module="dashboard">
+    <div class="module-box">
+        <% if ( module.title || module.subtitle ) { %>
+            <header class="module-header">
+                <% if ( module.title ) { %>
+                    <h2 class="title"><%= module.title; %></h2>
+                <% } %>
+                <% if ( module.subtitle ) { %>
+                    <p class="subtitle"><%= module.subtitle; %></p>
+                <% } %>
+            </header>
+        <% } %>
+
+        <div class="module-body">
+
+            <div class="widget" data-widget="questionnaires" data-active="false" data-has-items="false">
+                <div class="widget-header">
+                    <h3 class="title">Questionnaires</h3>
+                    <p class="subtitle"><%= user.role > 0 ? 'Review questionnaire activity' : 'View completed questionnaires and fill out new ones' %></p>
+                </div>
+
+                <div class="widget-body">
+                    <% if ( req.session.isSuper ) { %>
+                        <div class="statistics" data-statistics="users">
+                            <div class="load-container">
+                                <div class="loader"></div>
+                            </div>
+                            <div class="statistics-body">
+                                <div id="chart-data"></div>
+                            </div>
+                        </div>
+                    <% } else { %>
+                        <div class="notice">
+                            <p>You have <span class="counter-box"><span class="counter">0</span></span> questionnaires to <%= user.role > 0 ? 'review' : 'fill' %>.</p>
+                        </div>
+                    <% } %>
+                </div>
+
+                <div class="widget-footer">
+                    <a href="/questionnaires" class="trigger">Go to questionnaires</a>
+                </div>
+            </div>
+
+            <div class="form-field hidden">
+                <input type="hidden" name="token" value="<%= token %>">
+            </div>
+
+        </div>
+    </div>
+</div>

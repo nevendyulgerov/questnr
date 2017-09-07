@@ -1,0 +1,580 @@
+// -----------------------------------------------------------------------------
+// This file contains styles for the header.
+// -----------------------------------------------------------------------------
+
+header.header {
+  overflow: hidden;
+  position: relative;
+  min-height: 75px;
+  @extend .z-depth-1;
+  z-index: auto;
+
+  .trigger.go-home {
+    &:active {
+      transition: all 0.3s;
+      color: $soft-green;
+    }
+  }
+
+  .top-menu {
+    width: 100%;
+    position: fixed;
+    background-color: $dark-metallic;
+    z-index: 100000;
+    @extend .z-depth-1;
+
+    .logo {
+      position: relative;
+      display: inline-block;
+      float: left;
+      padding: 6px 0px;
+      transition: all 0.3s;
+
+      &.selected {
+        .app-name {
+          color: $light-green;
+          transition: all 0.3s;
+        }
+      }
+
+      &:hover {
+        .image-box {
+          transition: all 0.3s;
+        }
+
+        .app-name {
+          transition: all 0.3s;
+        }
+      }
+
+      @include respond-to('desktop-sm') {
+        padding-left: 15px;
+      }
+
+      .circle {
+        position: relative;
+        display: inline-block;
+        background-color: $light-green;
+        border-radius: 50%;
+        width: 54px;
+        height: 54px;
+      }
+
+      .image-box {
+        position: relative;
+        top: 10px;
+        display: inline-block;
+        border-radius: 50%;
+        width: 45px;
+        height: 45px;
+        margin-right: 2px;
+        transition: all 0.3s;
+        overflow: hidden;
+        @extend .z-depth-1;
+
+        .polygon-canvas {
+          border-radius: 50%;
+          position: absolute;
+          top: 0px;
+          left: 0px;
+          width: 100%;
+          height: 100%;
+          padding: 0px;
+        }
+      }
+
+      img {
+        position: relative;
+        top: 4px;
+        left: 4px;
+        display: inline-block;
+        width: 35px;
+        height: auto;
+        transition: all 0.3s;
+      }
+
+      .app-name {
+        position: relative;
+        top: 1px;
+        text-transform: uppercase;
+        display: inline-block;
+        float: right;
+        padding: 15px 15px 15px 10px;
+        font-size: 22px;
+        font-family: $font-muli;
+        transition: all 0.3s;
+        color: $light-green;
+        font-weight: 300;
+        letter-spacing: 4px;
+        @extend .z-font-depth-0;
+      }
+    }
+
+    .nav-box {
+      position: relative;
+    }
+
+    .navigation {
+      display: inline-block;
+      float: right;
+      padding: 13px 0px;
+      position: relative;
+      bottom: 0px;
+
+      @include respond-to('desktop-sm') {
+        padding-right: 15px;
+      }
+
+      @include respond-to('mobile-n') {
+        padding: 25px 15px;
+      }
+
+      ul.main-navigation {
+        list-style-type: none;
+        margin-top: 6px;
+        margin-bottom: 6px;
+        transition: all 0.3s;
+
+        @include respond-to('mobile-n') {
+          display: block;
+          position: fixed;
+          width: 300px;
+          height: 100%;
+          overflow-y: auto;
+          top: 70px;
+          left: -355px;
+          background-color: #313134;
+          box-shadow: 0 2px 5px 0 rgba(0,0,0,0.16), 0 2px 10px 0 rgba(0,0,0,0.12);
+
+          &[data-state="closed"] {
+            left: -355px;
+            transition: all 0.3s;
+          }
+
+          &[data-state="opened"] {
+            left: 0px;
+            transition: all 0.3s;
+          }
+
+          li:not(.login):not(.logout):not(.signup):not(.profile) {
+            a {
+              padding-left: 0px;
+            }
+          }
+        }
+
+        li {
+          position: relative;
+          display: inline-block;
+          margin-right: 10px;
+
+          @include respond-to('mobile-n') {
+            display: block;
+            margin: 40px 0px;
+          }
+
+          &.selected {
+            > a {
+              color: $light-green;
+            }
+          }
+
+          &.profile {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            @extend .z-depth-1;
+            text-align: center;
+            margin-right: 20px;
+            background-color: $light-green;
+            transition: all 0.3s;
+
+            a {
+              display: flex;
+              justify-content: center;
+              align-items: center;
+              color: $dimmed;
+              min-width: inherit;
+
+              &:hover {
+                color: $dimmed;
+                cursor: default;
+              }
+
+              .profile-icon {
+                min-width: inherit;
+              }
+
+              .user-name {
+                position: relative;
+                bottom: 9px;
+                left: 5px;
+              }
+            }
+          }
+
+          &:last-child {
+            margin-right: 0px;
+
+            @include respond-to('mobile-xl') {
+              margin-bottom: 90px;
+            }
+          }
+
+          a {
+            position: relative;
+            padding: 7px 15px 10px 15px;
+            color: $white;
+            text-decoration: none;
+            transition: all 0.3s;
+            border-radius: 10px;
+            @extend .z-font-depth-1;
+
+            &:hover {
+              color: $light-green;
+              transition: all 0.3s;
+            }
+
+            &:focus {
+              outline: none;
+              color: $soft-green;
+            }
+          }
+
+          .profile-icon {
+            position: absolute;
+            top: -1px;
+
+            &:hover {
+              .image-box {
+                background-color: $light-grey;
+                transition: background-color 0.3s;
+              }
+            }
+
+            .image-box {
+              display: inline-block;
+              width: 28px;
+              height: 28px;
+              position: relative;
+              border-radius: 50%;
+              background-color: $white;
+              transition: background-color 0.3s;
+              @extend .z-depth-1;
+            }
+
+            img {
+              position: absolute;
+              top: -1px;
+              left: -1px;
+              display: block;
+              width: 30px;
+              height: 30px;
+              border-radius: 50%;
+            }
+
+            .icon {
+              font-size: 32px;
+            }
+          }
+        }
+
+        .submenu {
+          opacity: 0;
+          position: absolute;
+          width: 120px;
+          top: 30px;
+          height: auto;
+          margin: 0px;
+          padding: 0px;
+          background-color: $dark-metallic;
+          transition: all 0.3s;
+          pointer-events: none;
+          z-index: 10000;
+          @extend .z-depth-1;
+
+          @include respond-to('mobile-xl') {
+            width: 100%;
+          }
+
+          &[data-state="opened"] {
+            opacity: 1;
+            pointer-events: all;
+            transition: all 0.3s;
+          }
+
+          &[data-active="true"] {
+            display: block;
+          }
+
+          &[data-active="false"] {
+            display: none;
+          }
+
+          li {
+            display: block;
+            padding: 15px 8px;
+
+            @include respond-to('mobile-xl') {
+              margin: 0px;
+              padding: 15px;
+            }
+
+            &:first-child {
+              padding-top: 25px;
+            }
+          }
+        }
+
+        .login, .logout {
+          transition: all 0.3s;
+
+          a {
+            display: inline-block;
+            border: 1px solid #efefef;
+            transition: all 0.3s;
+          }
+
+          &:hover {
+            a {
+              border-color: $light-green;
+              transition: all 0.3s;
+            }
+          }
+
+          &.selected {
+            a {
+              border-color: $light-green;
+              transition: all 0.3s;
+            }
+          }
+        }
+
+        .signup {
+          transition: all 0.3s;
+
+          a {
+            display: inline-block;
+            background-color: $lighter-grey;
+            color: $black;
+            border: 1px solid #efefef;
+            transition: all 0.3s;
+          }
+
+          &:hover {
+            a {
+              background-color: $light-green;
+              border-color: $light-green;
+              color: $black;
+              transition: all 0.3s;
+            }
+          }
+
+          &.selected {
+            a {
+              background-color: $light-green;
+              border-color: $light-green;
+              color: $black;
+              transition: all 0.3s;
+            }
+          }
+
+          @include respond-to('mobile-n') {
+            a {
+              display: inline-block;
+            }
+          }
+        }
+
+        .language {
+          display: none !important;
+          position: relative;
+          width: 120px;
+          height: 15px;
+        }
+
+        .user {
+          color: $white;
+        }
+      }
+    }
+  }
+
+
+
+
+  .polygon-canvas {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    height: 100%;
+    padding-top: 80px;
+
+    canvas {
+      width: 100%;
+    }
+
+  }
+
+  .header-content {
+    position: relative;
+    height: 640px;
+    padding-top: 78px;
+    background-size: cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+
+    &[data-template="small"] {
+      height: 200px;
+    }
+
+    &[data-template="large"] {
+      height: calc(100vh - 206px);
+    }
+
+    @include respond-to('mobile-lg') {
+      height: 540px;
+      padding: 70px 15px 0px 15px;
+    }
+
+    @include respond-to('mobile-md') {
+      height: 440px;
+    }
+
+    .page-title {
+      position: relative;
+      color: $white;
+      width: 720px;
+      padding-top: 2px;
+      max-width: 100%;
+      text-transform: uppercase;
+      text-align: center;
+
+      h1 {
+        text-align: center;
+        margin: 0px;
+        font-size: 52px;
+        letter-spacing: 4px;
+        font-family: $font-muli;
+        @extend .z-font-depth-0;
+
+        @include respond-to('mobile-lg') {
+          font-size: 42px;
+        }
+
+        @include respond-to('mobile-md') {
+          font-size: 32px;
+          word-break: break-word;
+        }
+      }
+    }
+
+    .page-subtitle {
+      position: relative;
+      color: $white;
+      width: 640px;
+      max-width: 100%;
+      text-align: center;
+
+      p {
+        margin-bottom: 0px;
+        @extend .z-font-depth-0;
+      }
+    }
+  }
+
+  .details {
+    text-align: center;
+    padding: 40px 0px 0px 0px;
+
+    p {
+      margin: 0px 0px 5px 0px;
+      font-size: 18px;
+
+      &:last-child {
+        font-style: italic;
+      }
+    }
+  }
+
+  .trigger.go-home {
+
+    &:hover {
+      .app-name {
+        color: $light-green;
+        transition: all 0.3s;
+      }
+    }
+  }
+
+  .cta-box {
+    padding: 20px 0px 0px 0px;
+    text-align: center;
+  }
+
+  .notice-trial-expired {
+    display: none !important;
+    opacity: 0;
+    transition: all 0.3s;
+    position: relative;
+
+    &.active {
+      display: inline-block !important;
+      opacity: 1;
+      transition: all 0.3s;
+    }
+
+    &:hover {
+      .icon {
+        transition: all 0.3s;
+      }
+    }
+
+    .icon {
+      position: absolute;
+      top: -4px;
+      left: 0px;
+      font-size: 32px;
+      color: $yellow;
+      transition: all 0.3s;
+    }
+  }
+
+  .trigger.go-signup {
+    background-color: $light-green;
+    display: inline-block;
+    border-color: $lighter-grey !important;
+    border-radius: 10px;
+    text-decoration: none;
+    @extend .z-depth-1;
+    transition: all 0.3s;
+
+    &:hover {
+      @extend .z-depth-2;
+      transition: all 0.3s;
+    }
+
+
+    color: $white;
+    border-color: $white;
+    text-transform: uppercase;
+    padding: 15px 45px;
+    font-size: 20px;
+
+    &:hover {
+      background-color: $light-green;
+      border-color: $light-green;
+    }
+  }
+
+  .trigger.toggle-mobile-menu {
+    display: none;
+
+    @include respond-to('mobile-n') {
+      display: block;
+    }
+  }
+}

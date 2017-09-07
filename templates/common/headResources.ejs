@@ -1,0 +1,51 @@
+<%
+/**
+ * Template: Head Resources
+ * Contains head resources
+ */
+%>
+
+<%
+/**
+ * Favicon
+ */
+%>
+<link href="/images/favicon.png" rel="icon" type="image/png">
+
+<%
+/**
+ * Font Roboto
+ */
+%>
+<link href="https://fonts.googleapis.com/css?family=Roboto:300,400" rel="stylesheet">
+
+<%
+/**
+ * Font Muli
+ */
+%>
+<link href="https://fonts.googleapis.com/css?family=Muli:400,700" rel="stylesheet">
+
+<%
+/**
+ * Font Awesome
+ */
+%>
+<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+
+
+<%
+/**
+ * Stylesheet
+ */
+%>
+<link href="/stylesheets/style.css" rel="stylesheet">
+
+<%
+/**
+ * Google Recaptcha API
+ */
+%>
+<% if ( typeof captcha !== "undefined" ) { %>
+    <script src='https://www.google.com/recaptcha/api.js'></script>
+<% } %>

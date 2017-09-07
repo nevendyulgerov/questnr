@@ -1,0 +1,53 @@
+<%
+/**
+ * Module Template: Login
+ * @param object module
+ */
+%>
+
+<div class="module" data-module="login">
+    <div class="module-box">
+        <% if ( module.title || module.subtitle ) { %>
+        <header class="module-header">
+            <% if ( module.title ) { %>
+            <h2 class="title"><%= module.title; %></h2>
+            <% } %>
+            <% if ( module.subtitle ) { %>
+            <p class="subtitle"><%= module.subtitle; %></p>
+            <% } %>
+        </header>
+        <% } %>
+
+        <div class="module-body">
+            <form action="">
+                <div class="form-field">
+                    <input type="email" name="email" placeholder="Email"/>
+                </div>
+
+                <div class="form-field">
+                    <input type="password" name="password" placeholder="Password"/>
+                </div>
+
+                <div class="form-field captcha">
+                    <div class="g-recaptcha" data-sitekey="<%= captcha.key %>"></div>
+                </div>
+
+                <div class="form-field hidden">
+                    <input type="hidden" name="token" value="<%= token %>">
+                </div>
+
+                <div class="form-action">
+                    <a href="#" class="trigger button login">
+                        <div class="load-container load8">
+                            <div class="loader">Loading...</div>
+                        </div>
+                        <span class="text">Login</span>
+                    </a>
+                </div>
+
+                <p>No account? <a href="/signup">Sign up</a>.</p>
+                <p>Forgot your password? <a href="/forgot-password">Reset it</a>.</p>
+            </form>
+        </div>
+    </div>
+</div>

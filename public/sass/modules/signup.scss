@@ -1,0 +1,37 @@
+
+/**
+ * Styles for module 'signup'
+ */
+
+[data-module="signup"] {
+  margin: 0px auto;
+  max-width: 100%;
+  @extend .wrap-box;
+  @extend .wrap-box-tiny;
+
+  .module-box {
+    @extend .content-box;
+    margin: 20px 15px 80px 15px;
+  }
+
+  .module-header {
+    @extend .content-box-header;
+  }
+
+  .module-body {
+    form {
+      @extend .form-base;
+    }
+  }
+
+  .trigger {
+    @extend .button-loading;
+    margin-top: -5px;
+
+    &.loading {
+      .load-container {
+        left: -45px;
+      }
+    }
+  }
+}

@@ -1,0 +1,34 @@
+{
+  "user": {
+    "signup": {
+      "to": "",
+      "from": "",
+      "subject": "{appName} - Account Registration",
+      "text": "{appName} - Account Registration",
+      "html": "<p>Hi {user},</p><p>Your {appName} account has been successfully activated.</p><p>Username: {email}<br/>Password: <strong>{pass}</strong><p>Kind Regards,<br/>The {appName} Team</p>"
+    },
+    "passReset": {
+      "to": "",
+      "from": "",
+      "subject": "{appName} - Password Reset",
+      "text": "{appName} - Password Reset",
+      "html": "<p>Hi {user},</p><p>You have recently requested a password reset for your {appName} account.</p><p>Please click on the following <a href='{resetLink}'>link</a> to reset your password.</p><p>Kind Regards,<br/>The {appName} Team</p>"
+    },
+    "successPassReset": {
+      "to": "",
+      "from": "",
+      "subject": "{appName} - Successful Password Reset",
+      "text": "{appName} - Successful Password Reset",
+      "html": "<p>Hi {user},</p><p>You have successfully updated your {appName} password.<p>Kind Regards,<br/>The {appName} Team</p>"
+    }
+  },
+  "admin": {
+    "signup": {
+      "to": "",
+      "from": "",
+      "subject": "{appName} - Account Registration",
+      "text": "{appName} - Account Registration",
+      "html": "<p>Hi Admin,</p><p>A new user has just registered on {appName}</p><p>User email: {userEmail}</br>Name: {userName}</p><p>Kind Regards,<br/>The {appName} Autoresponse System</p>"
+    }
+  }
+}

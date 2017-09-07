@@ -1,0 +1,697 @@
+// -----------------------------------------------------------------------------
+// This file contains base styles.
+// -----------------------------------------------------------------------------
+
+body {
+  position: relative;
+  min-height: 100vh;
+  overflow-x: hidden;
+  padding: 0px;
+  margin: 0px;
+  background-color: $lighter-grey;
+  font-family: $font-muli;
+}
+
+a {
+  text-decoration: none;
+  color: $light-green;
+  transition: all 0.3s;
+  line-height: 1.5;
+
+  &:hover {
+    transition: all 0.3s;
+    color: $green;
+  }
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: $font-roboto;
+  margin: 10px 0px;
+  padding: 0px;
+  line-height: 30px;
+}
+
+h1 {
+  font-size: 42px;
+}
+
+h2 {
+  font-size: 36px;
+}
+
+h3 {
+  font-size: 30px;
+}
+
+h4 {
+  font-size: 24px;
+}
+
+h5, h6 {
+  font-size: 18px;
+}
+
+p {
+  line-height: 1.5;
+}
+
+ul, ol {
+  padding-left: 18px;
+}
+
+main {
+  min-height: calc(100vh - 384px);
+
+  @include respond-to('mobile-lg') {
+    min-height: calc(100vh - 374px);
+  }
+}
+
+.hidden {
+  display: none;
+  visibility: hidden;
+  opacity: 0;
+}
+
+.container {
+  position: relative;
+  width: $max-width;
+  max-width: 100%;
+  margin: 0 auto;
+}
+
+.wrap-box {
+  position: relative;
+  max-width: 100%;
+  margin: 0 auto;
+  overflow: auto;
+}
+
+.wrap-box-extra-big {
+  width: 1200px;
+}
+
+.wrap-box-big {
+  width: 920px;
+}
+
+.wrap-box-normal {
+  width: 820px;
+}
+
+.wrap-box-small {
+  width: 720px;
+}
+
+.wrap-box-tiny {
+  width: 460px;
+
+  @include respond-to('mobile-md') {
+    width: 100%;
+  }
+}
+
+.g-recaptcha {
+  div {
+    width: 100% !important;
+  }
+}
+
+::selection,
+input::selection,
+select::selection {
+  background: $soft-green;
+}
+::selection,
+input::selection,
+select::selection {
+  background: $soft-green;
+}
+
+.notifications,
+.confirmations {
+  position: fixed;
+  top: 75px;
+  right: 0px;
+  width: auto;
+  height: auto;
+  padding: 0px;
+  overflow: hidden;
+  z-index: 1000000;
+
+  @include respond-to('mobile-md') {
+    padding: 0px;
+    width: 100%;
+    left: 0px;
+  }
+
+  .notification,
+  .confirmation {
+    position: relative;
+    float: right;
+    clear: both;
+    margin: 10px 15px 10px 10px;
+    width: 360px;
+    max-width: 100%;
+    padding: 15px;
+    transition: all 0.3s;
+    border-radius: 2px;
+    z-index: 999;
+    @extend .z-depth-0;
+
+    &:first-child {
+      margin-top: 20px;
+    }
+
+    .trigger.close-notification {
+      opacity: 0;
+      pointer-events: none;
+      position: absolute;
+      transition: all 0.3s;
+      top: 5px;
+      right: 10px;
+      font-size: 20px;
+    }
+
+    &:hover {
+      .trigger.close-notification {
+        opacity: 1;
+        transition: all 0.3s;
+        pointer-events: all;
+      }
+    }
+
+    @include respond-to('mobile-md') {
+      width: 100%;
+      border-radius: 0px;
+      padding: 15px 15px 15px 30px;
+    }
+
+    @include respond-to('mobile-md') {
+      margin: 20px 0px 0px 0px;
+    }
+
+    .title {
+      display: inline-block;
+      margin: 0px 0px 5px 0px;
+      font-size: 22px;
+      font-weight: bold;
+      font-family: $font-muli;
+      letter-spacing: 1px;
+
+      @include respond-to('mobile-sm') {
+        font-size: 20px;
+      }
+    }
+
+    .subtitle {
+      margin: 0px;
+
+      @include respond-to('mobile-md') {
+        margin: 0px 0px 0px 25px;
+      }
+
+      @include respond-to('mobile-sm') {
+        font-size: 16px;
+      }
+    }
+
+    .icon {
+      display: inline-block;
+      position: relative;
+      bottom: 0px;
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      margin: 0px 10px 0px 0px;
+      text-align: center;
+
+      @include respond-to('mobile-md') {
+        margin: 0px 10px 0px 25px;
+      }
+
+      span {
+        font-size: 24px;
+        padding: 2px 0px 0px 0px;
+      }
+    }
+
+    &:hover {
+      transition: all 0.3s;
+      @extend .z-depth-1;
+    }
+
+    &.success {
+      background-color: $alert-light-green;
+      color: $white;
+
+      .trigger.close-notification {
+        color: $dark-green;
+      }
+
+      .title,
+      .subtitle {
+        color: $dark-green;
+      }
+
+      .icon {
+        background-color: $green;
+
+        span {
+          color: $alert-light-green;
+        }
+      }
+    }
+
+    &.info {
+      background-color: $alert-light-blue;
+      color: $blue;
+
+      .trigger.close-notification {
+        color: $blue;
+      }
+
+      .icon {
+        background-color: $blue;
+
+        span {
+          color: $alert-light-blue;
+        }
+      }
+    }
+
+    &.warning {
+      background-color: $alert-light-orange;
+      color: $red;
+
+      .trigger.close-notification {
+        color: $red;
+      }
+
+      .icon {
+        background-color: $red;
+
+        span {
+          color: $alert-light-orange;
+        }
+      }
+    }
+
+    &.error {
+      background-color: $alert-light-red;
+      color: $red;
+
+      .trigger.close-notification {
+        color: $red;
+      }
+
+      .icon {
+        background-color: $red;
+
+        span {
+          color: $alert-light-red;
+        }
+      }
+    }
+  }
+}
+
+.notify-and-confirm {
+  .confirmation-buttons {
+    padding: 20px 0px 10px 0px;
+
+    @include respond-to('mobile-md') {
+      padding: 20px 20px 5px 25px;
+    }
+
+    a {
+      padding: 10px 15px;
+      background-color: $light-grey;
+      color: $dimmed;
+      border-radius: 2px;
+      transition: all 0.3s;
+
+      &:hover {
+        transition: all 0.3s;
+        @extend .z-depth-0;
+      }
+
+      &.notifier-btn-confirm {
+        background-color: $light-green;
+        color: $white;
+        margin: 0px 10px 0px 0px;
+      }
+
+      &.notifier-btn-cancel {
+        background-color: $red;
+        color: $white;
+      }
+    }
+  }
+}
+
+.confirmations {
+  position: fixed;
+  top: 25%;
+  right: 0px;
+  width: 100%;
+  height: auto;
+  padding: 20px;
+  overflow: hidden;
+  z-index: 999;
+
+  .confirmation {
+    position: fixed;
+    left: 0px;
+    right: 0px;
+    margin: 0 auto;
+    background-color: $alert-light-blue;
+    color: $dark-blue;
+
+    &.confirm-trial-expired {
+      background-color: $alert-light-orange;
+      color: $dimmed;
+    }
+
+    .icon {
+      background-color: $blue;
+
+      span {
+        color: $alert-light-blue;
+      }
+    }
+
+    .subtitle {
+      margin-bottom: 20px;
+    }
+
+    .notifier-btn-confirm {
+      background-color: $light-green;
+      color: $white;
+      padding: 5px 15px;
+      margin-right: 10px;
+      transition: all 0.3s;
+
+      &:hover {
+        background-color: $white;
+        color: $light-green;
+        @extend .z-depth-0;
+        transition: all 0.3s;
+      }
+    }
+
+    .notifier-btn-cancel {
+      background-color: $light-pink;
+      color: $white;
+      padding: 5px 15px;
+      transition: all 0.3s;
+
+      &:hover {
+        background-color: $white;
+        color: $light-pink;
+        @extend .z-depth-0;
+        transition: all 0.3s;
+      }
+    }
+  }
+}
+
+.content-box {
+  position: relative;
+  overflow: auto;
+  margin: 16px 0;
+  padding: 14px;
+  border: 1px solid #e5e5e5;
+  background: #fff;
+  font-size: 13px;
+  line-height: 2.1em;
+  border-radius: 6px;
+  word-wrap: break-word;
+  @extend .z-depth-0;
+  transition: all 0.3s;
+
+  &:hover {
+    @extend .z-depth-1;
+    transition: all 0.3s;
+  }
+}
+
+.content-box-header {
+  margin: 0px 0px 20px 0px;
+  border-bottom: 1px solid $light-grey;
+  padding-bottom: 2px;
+
+  .title {
+    margin: 0px 0px 5px 0px;
+    font-weight: 400;
+    line-height: 1.2;
+    font-family: $font-muli;
+  }
+
+  .subtitle {
+    font-size: 16px;
+    margin: 0;
+  }
+}
+
+.button-base {
+  display: inline-block;
+  width: auto;
+  max-width: 100%;
+  padding: 14px 28px;
+  background-color: $light-green;
+  color: $white;
+  @extend .z-depth-0;
+  transition: all 0.3s;
+  border: none;
+  border-radius: 6px;
+  text-transform: uppercase;
+  font-size: 16px;
+
+  &:hover {
+    cursor: pointer;
+    text-decoration: none;
+    @extend .z-depth-1;
+    transition: all 0.3s;
+  }
+
+  &:active {
+    border: none;
+    outline: none;
+    background-color: $alert-light-green;
+    transition: all 0.3s;
+  }
+
+  &:focus {
+    border: none;
+    outline: none;
+    transition: all 0.3s;
+    background-color: $soft-green;
+  }
+}
+
+
+.button-base-small {
+  @extend .button-base;
+  padding: 7px 14px;
+}
+
+.button-loading {
+  @extend .button-base;
+  position: relative;
+  overflow: hidden;
+
+  .load-container {
+    top: 0px;
+    left: -70px;
+    height: 50px;
+    opacity: 0;
+    transition: all 0.3s;
+    pointer-events: none;
+
+    .loader {
+      width: 20px;
+      height: 20px;
+      border-top-color: $grey;
+      border-right-color: $grey;
+      border-bottom-color: $grey;
+      border-left-color: $dimmed;
+    }
+  }
+
+  .text {
+    pointer-events: none;
+    transition: all 0.3s;
+  }
+
+  &.loading {
+    background-color: $light-grey;
+    color: $dimmed;
+    transition: all 0.3s;
+    box-shadow: none;
+
+    &:hover {
+      box-shadow: none;
+      cursor: progress;
+    }
+
+    .load-container {
+      opacity: 1;
+      left: -36px;
+      transition: all 0.3s;
+    }
+
+    .text {
+      padding-left: 25px;
+      transition: all 0.3s;
+    }
+  }
+}
+
+
+.main-overlay {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0);
+  pointer-events: none;
+  transition: all 0.3s;
+  z-index: 10;
+
+  &.active {
+    background-color: rgba(0, 0, 0, 0.65);
+    pointer-events: all;
+    transition: all 0.3s;
+  }
+}
+
+.input-base {
+  width: calc(100% - 30px);
+  padding: 15px;
+  border-radius: 6px;
+  border: none;
+  background-color: $lighter-grey;
+  color: $dimmed;
+  font-size: 14px;
+  @extend .z-depth-0;
+  transition: all 0.3s;
+  font-family: $font-muli;
+
+  &:active,
+  &:focus {
+    border: none;
+    outline: none;
+    background-color: $alert-light-green;
+    transition: all 0.3s;
+  }
+}
+
+.select-base {
+  @extend .input-base;
+  border: 1px solid transparent;
+  width: 100%;
+  background-color: $white;
+
+  &:active,
+  &:focus {
+    border: 1px solid $light-green;
+    background-color: $white;
+  }
+}
+
+.textarea-base {
+  @extend .input-base;
+  height: 80px;
+  max-height: 320px;
+  resize: vertical;
+}
+
+.form-base {
+  .form-field {
+    padding: 0px 0px 20px 0px;
+
+    &:last-child {
+      padding: 0px;
+    }
+
+    input {
+      @extend .input-base;
+    }
+  }
+
+  .form-action {
+    input {
+      @extend .button-base;
+    }
+  }
+}
+
+.widget-base {
+  @extend .content-box;
+
+  .widget-header {
+    @extend .content-box-header;
+
+    .title {
+      font-size: 22px;
+    }
+  }
+}
+
+.warning-note {
+  padding: 10px 15px;
+  background-color: $alert-light-orange;
+  color: $dimmed;
+  border-radius: 2px;
+  font-size: 16px;
+  @extend .z-depth-0;
+}
+
+.widget[data-widget="pagination"] {
+  float: right;
+  @extend .z-depth-0;
+
+  .trigger.prev-page {
+    display: inline-block;
+    float: left;
+    padding: 12px 20px;
+    background-color: $lighter-grey;
+    border-right: 1px solid $grey;
+    transition: all 0.3s;
+    font-size: 16px;
+
+    &:hover {
+      transition: all 0.3s;
+      @extend .z-depth-1;
+    }
+  }
+
+  .page-number {
+    display: inline-block;
+    padding: 10px 22px 11px 22px;
+    font-weight: bold;
+    font-size: 16px;
+    background-color: $lighter-grey;
+  }
+
+  .trigger.next-page {
+    display: inline-block;
+    float: right;
+    padding: 12px 20px;
+    background-color: $lighter-grey;
+    border-left: 1px solid $grey;
+    transition: all 0.3s;
+    font-size: 16px;
+
+    &:hover {
+      transition: all 0.3s;
+      @extend .z-depth-1;
+    }
+  }
+}
+
+.rc-anchor-light {
+  border-radius: 6px !important;
+}

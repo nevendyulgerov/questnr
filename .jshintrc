@@ -1,0 +1,10 @@
+{
+  "browser": true,
+  "jquery": false,
+  "mocha": true,
+  "node": true,
+  "globals": {
+    "portal": true,
+    "$": true
+  }
+}

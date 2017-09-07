@@ -1,0 +1,163 @@
+/// -----------------------------------------------------------------------------
+/// This file contains all application-wide Sass variables.
+/// -----------------------------------------------------------------------------
+
+
+/// Light blue
+/// @type Color
+$light-blue: rgb(83, 203, 255) !default;
+
+/// Blue
+/// @type Color
+$blue: rgb(39, 167, 222) !default;
+
+/// Dark blue
+/// @type Color
+$dark-blue: rgb(44, 109, 137) !default;
+
+/// Darker blue
+/// @type Color
+$darker-blue: rgb(60, 70, 76) !default;
+
+/// Purple
+/// @type Color
+$purple: #b881fc !default;
+
+/// Red
+/// @type Color
+$red: rgb(254, 81, 65) !default;
+
+/// Light Red
+/// @type Color
+$light-red: rgba(217, 30, 24, 0.5) !default;
+
+/// Alert Red
+/// @type Color
+$alert-red: #a94442;
+
+
+/// Alert Light Red
+/// @type Color
+$alert-light-red: #f2dede;
+
+/// Alert Green
+/// @type Color
+$alert-green: #3c763d;
+
+/// Alert Light Green
+/// @type Color
+$alert-light-green: #d6e9c6;
+
+/// Alert Blue
+/// @type Color
+$alert-blue: #31708f;
+
+/// Alert Light Blue
+/// @type Color
+$alert-light-blue: #d9edf7;
+
+/// Alert Orange
+/// @type Color
+$alert-orange: #8a6d3b;
+
+/// Alert Light Orange
+/// @type Color
+$alert-light-orange: #faebcc;
+
+/// Green
+/// @type Color
+$green: #41A85F !default;
+
+/// Dark Green
+/// $type Color
+$dark-green: #138c35 !default;
+
+/// Light Green
+/// @type Color
+$light-green: rgb(144, 198, 149) !default;
+
+/// Soft Green
+/// @type Color
+$soft-green: #b1dfad !default;
+
+/// Yellow
+/// @type Color
+$yellow: rgb(255, 173, 0) !default;
+
+/// Pale Yellow
+/// @type Color
+$pale-yellow: #E8DCA3;
+
+/// Light Yellow
+/// @type Color
+$light-yellow: rgba(255, 173, 0, 0.5);
+
+/// White
+/// @type Color
+$white: rgb(255, 255, 255) !default;
+
+/// Lighter grey
+/// @type Color
+$lighter-grey: rgb(246, 246, 246) !default;
+
+/// Light grey
+/// @type Color
+$light-grey: rgb(242, 242, 242) !default;
+
+/// Grey
+/// @type Color
+$grey: rgb(216, 216, 216) !default;
+
+/// Dark Grey
+/// @type Color
+$dark-grey: rgb(156, 156, 156) !default;
+
+/// Light pink
+/// @type Color
+$light-pink: rgb(224, 130, 131) !default;
+
+/// Darker Grey
+/// @type Color
+$darker-grey: rgb(83, 83, 83) !default;
+
+/// Black
+/// @type Color
+$black: rgb(0, 0, 0) !default;
+
+/// Dimmed
+/// @type Color
+$dimmed: #333 !default;
+
+/// Dark Metallic
+/// @type Color
+$dark-metallic: rgb(49, 49, 52) !default;
+
+/// Container's maximum width
+/// @type Length
+$max-width: 1200px !default;
+
+/// Regular text size
+$regular-text-size: 17px;
+
+/// Breakpoints map
+/// @prop {String} keys - Keys are identifiers mapped to a given length
+/// @prop {Map} values - Values are actual breakpoints expressed in pixels
+$breakpoints: (
+        'mobile-sm': (max-width: 400px),
+        'mobile-mm': (max-width: 560px),
+        'mobile-md': (max-width: 640px),
+        'mobile-lg': (max-width: 768px),
+        'mobile-n': (max-width: 1040px),
+        'mobile-xl': (max-width: 1024px),
+        'desktop-n': (max-width: 1200px),
+        'desktop-sm': (max-width: 1280px),
+        'desktop-md': (max-width: 1366px),
+        'desktop-lg': (max-width: 1440px),
+        'desktop-xl': (max-width: 1980px),
+) !default;
+
+/// Relative or absolute URL where all assets are served from
+/// @type String
+/// @example scss - When using a CDN
+/// $base-url: 'http://cdn.example.com/assets/';
+$base-url: './public/' !default;

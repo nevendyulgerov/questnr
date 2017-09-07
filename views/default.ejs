@@ -1,0 +1,15 @@
+<%
+/**
+ * View: Default
+ */
+%>
+
+<% include ../templates/common/header.ejs %>
+
+<main class="view" data-view="<%= page %>">
+    <% modules.map((m) => { %>
+        <%- include('../templates/modules/'+m.name+'.ejs', {module: m}) %>
+    <% }) %>
+</main>
+
+<% include ../templates/common/footer.ejs %>

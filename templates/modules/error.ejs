@@ -1,0 +1,21 @@
+<%
+/**
+ * Module Template: Error
+ * @param object module
+ */
+%>
+
+<div class="module" data-module="error">
+    <div class="module-box">
+        <% if ( module.title || module.subtitle ) { %>
+        <header class="module-header">
+            <% if ( module.title ) { %>
+            <h2 class="title"><%= module.title; %></h2>
+            <% } %>
+            <% if ( module.subtitle ) { %>
+            <p class="subtitle"><%= module.subtitle; %></p>
+            <% } %>
+        </header>
+        <% } %>
+    </div>
+</div>

@@ -1,0 +1,30 @@
+<%
+/**
+ * Template: Footer
+ */
+%>
+
+<footer class="footer">
+
+   <div class="container">
+       <div class="footer-box">
+           <p>
+                <% if ( Array.isArray(footer.items) ) { %>
+                    <% footer.items.forEach((item, i) => { %>
+                        <a href="<%= item.link %>"><%= item.text %></a> <%- i + 1 < footer.items.length ? "<span class='separator'>|</span>" : ""; %>
+                    <% }) %>
+                <% } %>
+           </p>
+       </div>
+   </div>
+
+    <div class="copyright">
+        <p>© <%= settings.year %> <%= name %>, All Rights Reserved.</p>
+    </div>
+
+</footer>
+
+<% include footerResources.ejs %>
+
+</body>
+</html>

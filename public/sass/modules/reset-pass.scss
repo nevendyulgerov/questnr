@@ -1,0 +1,30 @@
+
+/**
+ * Styles for module 'resetPass'
+ */
+
+[data-module="resetPass"] {
+  width: 480px;
+  margin: 0px auto;
+  padding: 0px 15px 80px 15px;
+  max-width: 100%;
+  @extend .wrap-box;
+
+  .module-box {
+    @extend .content-box;
+  }
+
+  .module-header {
+    @extend .content-box-header;
+  }
+
+  .module-body {
+    form {
+      @extend .form-base;
+    }
+  }
+
+  .trigger {
+    margin-top: -5px;
+  }
+}

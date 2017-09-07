@@ -1,0 +1,111 @@
+
+/**
+ * Styles for module 'dashboard'
+ */
+
+[data-module="dashboard"] {
+  margin: 0px auto;
+  padding: 0px 15px 80px 15px;
+  max-width: 100%;
+
+  .module-box {
+    @extend .wrap-box;
+    @extend .wrap-box-normal;
+    overflow: inherit;
+  }
+
+  .module-header {
+    @extend .content-box;
+    @extend .content-box-header;
+
+    .subtitle {
+      font-size: 18px;
+    }
+  }
+
+  .module-body {
+    overflow: inherit;
+
+    .widget[data-widget="questionnaires"] {
+      @extend .content-box;
+      overflow: inherit;
+
+      .widget-header {
+        @extend .content-box-header;
+        overflow: inherit;
+      }
+
+      .trigger {
+        @extend .button-base;
+      }
+
+      .notice {
+        margin-bottom: 20px;
+
+        p {
+          margin: 0px;
+        }
+
+        .counter {
+          display: inline-block;
+          position: relative;
+          padding-top: 4px;
+        }
+
+        .counter-box {
+          font-weight: bold;
+          color: $light-green;
+        }
+      }
+
+      &[data-has-items="true"] {
+        .counter {
+          display: inline-block;
+        }
+        .counter-box {
+          display: inline-block;
+          background-color: $light-green;
+          color: $white;
+          border-radius: 50%;
+          width: 27px;
+          height: 27px;
+          text-align: center;
+        }
+      }
+    }
+  }
+
+  .statistics {
+    width: 100%;
+    min-height: 180px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    &.active {
+      .load-container {
+        opacity: 0;
+      }
+
+      .statistics-body {
+        display: block;
+      }
+    }
+
+    .load-container {
+      width: 100%;
+      height: inherit;
+      pointer-events: none;
+
+      .loader {
+        margin: 10px auto;
+        border-color: $light-grey;
+        border-bottom-color: $soft-green;
+      }
+    }
+
+    .statistics-body {
+      display: none;
+    }
+  }
+}
